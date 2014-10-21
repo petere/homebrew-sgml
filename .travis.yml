@@ -1,0 +1,15 @@
+language: objective-c
+before_install:
+  - brew update
+install:
+  - mkdir -p $(brew --repo)/Library/Taps/travis
+  - ln -s $PWD $(brew --repo)/Library/Taps/travis/homebrew-testtap
+  - brew tap --repair
+env:
+  - PACKAGE=docbook-dsssl
+  - PACKAGE=docbook-sgml
+  - PACKAGE=openjade
+script:
+  - brew install -v $PACKAGE
+  - brew audit $PACKAGE
+  - brew test $PACKAGE

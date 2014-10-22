@@ -90,4 +90,8 @@ class Openjade < Formula
                          "--add", "#{etc}/sgml/catalog",
                          opt_share/'sgml/openjade/catalog'
   end
+
+  test do
+    system bin/"openjade", "--help"
+  end
 end

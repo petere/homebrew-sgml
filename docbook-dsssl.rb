@@ -17,4 +17,26 @@ class DocbookDsssl < Formula
            "--add", "#{etc}/sgml/catalog",
            opt_prefix/'docbook-dsssl/catalog'
   end
+
+  test do
+    if Formula["docbook-sgml"].installed? && Formula["openjade"].installed?
+      (testpath/"test.sgml").write <<EOS
+<!doctype book PUBLIC "-//OASIS//DTD DocBook V4.2//EN">
+<book id="foo">
+ <title>test</title>
+ <chapter>
+  <title>random</title>
+   <sect1>
+    <title>testsect</title>
+    <para>text</para>
+  </sect1>
+ </chapter>
+</book>
+EOS
+      system "#{Formula["openjade"].bin}/openjade", "-d", prefix/"docbook-dsssl/html/docbook.dsl", "-t", "sgml", "-V", "nochunks", "-V", "rootchunk", "-V", "%use-id-as-filename%", "test.sgml"
+      system "test", "-s", "foo.htm"
+    end
+
+    system bin/"collateindex.pl", "-V"
+  end
 end

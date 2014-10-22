@@ -40,4 +40,23 @@ class DocbookSgml < Formula
     export SGML_CATALOG_FILES="#{etc}/sgml/catalog"
     EOS
   end
+
+  test do
+    if Formula["open-sp"].installed?
+      (testpath/"test.sgml").write <<EOS
+<!doctype book PUBLIC "-//OASIS//DTD DocBook V4.2//EN">
+<book>
+ <title>test</title>
+ <chapter>
+  <title>random</title>
+   <sect1>
+    <title>testsect</title>
+    <para>text</para>
+  </sect1>
+ </chapter>
+</book>
+EOS
+      system "#{Formula["open-sp"].bin}/onsgmls", "-s", "test.sgml"
+    end
+  end
 end

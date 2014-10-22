@@ -6,7 +6,7 @@ install:
   - ln -s $PWD $(brew --repo)/Library/Taps/travis/homebrew-testtap
   - brew tap --repair
 env:
-  - PACKAGE=docbook-dsssl TEST_DEPS='docbok-sgml openjade'
+  - PACKAGE=docbook-dsssl TEST_DEPS='docbook-sgml openjade'
   - PACKAGE=docbook-sgml TEST_DEPS='open-sp'
   - PACKAGE=openjade
 before_script:

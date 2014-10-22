@@ -2,7 +2,7 @@ require 'formula'
 
 class DocbookDsssl < Formula
   homepage 'http://docbook.sourceforge.net/'
-  url 'https://downloads.sourceforge.net/projects/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.bz2'
+  url 'https://downloads.sourceforge.net/project/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.bz2'
   sha1 '0ee935247c9f850e930f3b5c162dbc03915469cd'
 
   def install

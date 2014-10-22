@@ -42,6 +42,8 @@ class DocbookSgml < Formula
   end
 
   test do
+    ENV["SGML_CATALOG_FILES"] = etc/"sgml/catalog"
+
     if Formula["open-sp"].installed?
       (testpath/"test.sgml").write <<EOS
 <!doctype book PUBLIC "-//OASIS//DTD DocBook V4.2//EN">

@@ -5,6 +5,13 @@ class DocbookSgml < Formula
   url 'http://www.docbook.org/sgml/4.2/docbook-4.2.zip'
   sha1 '98afcae616ed24edb30e40baa4ddd8cd8731f2c7'
 
+  bottle do
+    root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
+    cellar :any
+    sha1 "f339a54a844e0e5bb914f5bfe774d5a1cee5c3b0" => :yosemite
+    sha1 "00af02d622d06c869698d83bf2cf160ed0ff0a47" => :mavericks
+  end
+
   resource 'iso8879' do
     url 'http://www.oasis-open.org/cover/ISOEnts.zip'
     sha1 'e92da4b9e048eb4835e4c66fdfd56f9762ffbd2f'

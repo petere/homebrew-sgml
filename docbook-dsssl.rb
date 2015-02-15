@@ -5,6 +5,13 @@ class DocbookDsssl < Formula
   url 'https://downloads.sourceforge.net/project/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.bz2'
   sha1 '0ee935247c9f850e930f3b5c162dbc03915469cd'
 
+  bottle do
+    root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
+    cellar :any
+    sha1 "cefab2a39e2f44e85db01b27ab141cfa13a6b224" => :yosemite
+    sha1 "eeecbf086798652605e0c0cffc914641ebb2a173" => :mavericks
+  end
+
   def install
     (prefix/'docbook-dsssl').install %w(catalog VERSION common dtds frames html images lib olink print)
     bin.install 'bin/collateindex.pl'

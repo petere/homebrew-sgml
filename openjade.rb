@@ -5,6 +5,12 @@ class Openjade < Formula
   url 'https://downloads.sourceforge.net/project/openjade/openjade/1.3.2/openjade-1.3.2.tar.gz'
   sha1 '54e1999f41450fbd62c5d466002d79d3efca2321'
 
+  bottle do
+    root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
+    sha1 "ca2070a11c6ddbadca4a062ae6bdaaaead67ea67" => :yosemite
+    sha1 "76ccf8ead2cefdf37b10928a6d85af25c5436f39" => :mavericks
+  end
+
   depends_on 'open-sp'
 
   patch :p0 do

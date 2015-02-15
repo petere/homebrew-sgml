@@ -17,3 +17,13 @@ script:
   - brew bottle $PACKAGE
   - brew audit $PACKAGE
   - brew test $PACKAGE
+deploy:
+  provider: releases
+  api_key:
+    secure: LiGP+69L5H8UbKmCYMud1cmof8rs63Gf4VRLQ0+degJBXHVmWy1oZTdvfGeesDiQd0nCbUBmKLCQT76y2zsuUYuS6rCaY/uxqNC2TVyLmHkTyT/eyuapcshvdDxzW69qPF5G24ICoIFk4rmxgfseInuL6VCN7phQQM7LQjTNw4U=
+  file_glob: true
+  file: "*.bottle.tar.gz"
+  skip_cleanup: true
+  on:
+    repo: petere/homebrew-sgml
+    tags: true

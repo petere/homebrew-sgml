@@ -21,7 +21,7 @@ class Openjade < Formula
   patch :p0 do
     url "https://trac.macports.org/export/87593/trunk/dports/textproc/openjade/files/patch-Makefile.prog.in"
     sha1 "55913610160d78f023508448391fad5855ef6867"
-  end
+  end if OS.mac?
 
   patch :p0 do
     url "https://trac.macports.org/export/87593/trunk/dports/textproc/openjade/files/patch-ltmain.sh"
@@ -63,18 +63,25 @@ class Openjade < Formula
   patch :p0 do
     url "https://gist.github.com/theirix/3732807/raw/1400a70e6396f2c2f3d90a0ca1035e7a79ae8bd6/Makefile.prog.in.patch"
     sha1 "12b1dff73876910cbc8f370bf616673b10ce7ade"
-  end
+  end if OS.mac?
 
   def install
     ENV.append 'CXXFLAGS', '-fno-rtti'
 
     args = ["--prefix=#{prefix}",
             "--datadir=#{share}/sgml/openjade",
+            "--enable-spincludedir=#{Formula["open-sp"].include}/OpenSP",
+            "--enable-splibdir=#{Formula["open-sp"].lib}",
             "--enable-html",
             "--enable-http",
             "--enable-mif",
             "--disable-debug",
             "--disable-dependency-tracking"]
+
+    # Linuxbrew will not install the open-sp libtool archive.
+    inreplace "Makefile.prog.in",
+              "s/\\.a/.la/g",
+              "s/\\.a/.la/g;s/libosp.la/libosp.a/g" if OS.linux?
 
     system "./configure", *args
 

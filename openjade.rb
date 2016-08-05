@@ -1,9 +1,8 @@
-require 'formula'
-
 class Openjade < Formula
-  homepage 'http://openjade.sourceforge.net/'
-  url 'https://downloads.sourceforge.net/project/openjade/openjade/1.3.2/openjade-1.3.2.tar.gz'
-  sha256 '1d2d7996cc94f9b87d0c51cf0e028070ac177c4123ecbfd7ac1cb8d0b7d322d1'
+  desc "Implementation of the DSSSL language"
+  homepage "http://openjade.sourceforge.net/"
+  url "https://downloads.sourceforge.net/project/openjade/openjade/1.3.2/openjade-1.3.2.tar.gz"
+  sha256 "1d2d7996cc94f9b87d0c51cf0e028070ac177c4123ecbfd7ac1cb8d0b7d322d1"
 
   bottle do
     root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
@@ -11,7 +10,7 @@ class Openjade < Formula
     sha256 "20eb74265d7f0b86c900b9b873f3c9638880558a8146c5ad4bb3f6a83c9cd062" => :mavericks
   end
 
-  depends_on 'open-sp'
+  depends_on "open-sp"
 
   patch :p0 do
     url "https://trac.macports.org/export/87593/trunk/dports/textproc/openjade/files/patch-Makefile.lib.in"
@@ -66,7 +65,7 @@ class Openjade < Formula
   end
 
   def install
-    ENV.append 'CXXFLAGS', '-fno-rtti'
+    ENV.append "CXXFLAGS", "-fno-rtti"
 
     args = ["--prefix=#{prefix}",
             "--datadir=#{share}/sgml/openjade",
@@ -79,7 +78,7 @@ class Openjade < Formula
     system "./configure", *args
 
     # Patch libtool because it doesn't know about CXX
-    inreplace 'libtool' do |s|
+    inreplace "libtool" do |s|
       s.change_make_var! "CC", ENV.cc
       s.change_make_var! "CXX", ENV.cxx
     end
@@ -87,14 +86,14 @@ class Openjade < Formula
     system "make"
     system "make", "install"
 
-    (share/'sgml/openjade').install Dir['dsssl/*']
+    (share/"sgml/openjade").install Dir["dsssl/*"]
   end
 
   def post_install
-    (etc/'sgml').mkpath
+    (etc/"sgml").mkpath
     system "xmlcatalog", "--sgml", "--noout", "--no-super-update",
                          "--add", "#{etc}/sgml/catalog",
-                         opt_share/'sgml/openjade/catalog'
+                         opt_share/"sgml/openjade/catalog"
   end
 
   test do

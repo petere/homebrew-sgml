@@ -1,9 +1,8 @@
-require 'formula'
-
 class DocbookSgml < Formula
-  homepage 'http://www.docbook.org/'
-  url 'http://www.docbook.org/sgml/4.2/docbook-4.2.zip'
-  sha256 '67ebd2c94b342718c6865d2de60f5d4ff02d77a7e4b0d9e72a48c45f2b2635c3'
+  desc "standard SGML representation system for technical documents"
+  homepage "http://www.docbook.org/"
+  url "http://www.docbook.org/sgml/4.2/docbook-4.2.zip"
+  sha256 "67ebd2c94b342718c6865d2de60f5d4ff02d77a7e4b0d9e72a48c45f2b2635c3"
 
   bottle do
     root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
@@ -12,9 +11,9 @@ class DocbookSgml < Formula
     sha256 "d1440a6dcb437cccc280a30dcf9458d825d62db9e3c3ef5d479730e8d1e1e5bc" => :mavericks
   end
 
-  resource 'iso8879' do
-    url 'http://www.oasis-open.org/cover/ISOEnts.zip'
-    sha256 'dce4359a3996ed2fd33ad5eaa11a9bcfc24b5b06992e24295132b06db19a99b2'
+  resource "iso8879" do
+    url "http://www.oasis-open.org/cover/ISOEnts.zip"
+    sha256 "dce4359a3996ed2fd33ad5eaa11a9bcfc24b5b06992e24295132b06db19a99b2"
   end
 
   def install
@@ -22,20 +21,20 @@ class DocbookSgml < Formula
                dbnotnx.mod dbpoolx.mod docbook.cat docbook.dcl docbook.dtd
                docbookx.dtd soextblx.dtd]
 
-    (prefix/'docbook/sgml/4.2').install files
+    (prefix/"docbook/sgml/4.2").install files
 
-    resource('iso8879').stage do
-      (prefix/'docbook/sgml/4.2').install Dir['ISO*']
+    resource("iso8879").stage do
+      (prefix/"docbook/sgml/4.2").install Dir["ISO*"]
     end
 
-    inreplace prefix/'docbook/sgml/4.2/docbook.cat', /iso-(.*).gml/, "ISO\\1"
+    inreplace prefix/"docbook/sgml/4.2/docbook.cat", /iso-(.*).gml/, "ISO\\1"
   end
 
   def post_install
-    (etc/'sgml').mkpath
+    (etc/"sgml").mkpath
     system "xmlcatalog", "--sgml", "--noout", "--no-super-update",
            "--add", "#{etc}/sgml/catalog",
-           opt_prefix/'docbook/sgml/4.2/docbook.cat'
+           opt_prefix/"docbook/sgml/4.2/docbook.cat"
   end
 
   def caveats; <<-EOS.undent

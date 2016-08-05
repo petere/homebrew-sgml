@@ -1,9 +1,8 @@
-require 'formula'
-
 class DocbookDsssl < Formula
-  homepage 'http://docbook.sourceforge.net/'
-  url 'https://downloads.sourceforge.net/project/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.bz2'
-  sha256 '2f329e120bee9ef42fbdd74ddd60e05e49786c5a7953a0ff4c680ae6bdf0e2bc'
+  desc "modular DocBook DSSSL stylesheets"
+  homepage "http://docbook.sourceforge.net/"
+  url "https://downloads.sourceforge.net/project/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.bz2"
+  sha256 "2f329e120bee9ef42fbdd74ddd60e05e49786c5a7953a0ff4c680ae6bdf0e2bc"
 
   bottle do
     root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
@@ -13,16 +12,16 @@ class DocbookDsssl < Formula
   end
 
   def install
-    (prefix/'docbook-dsssl').install %w(catalog VERSION common dtds frames html images lib olink print)
-    bin.install 'bin/collateindex.pl'
-    man1.install 'bin/collateindex.pl.1'
+    (prefix/"docbook-dsssl").install %w[catalog VERSION common dtds frames html images lib olink print]
+    bin.install "bin/collateindex.pl"
+    man1.install "bin/collateindex.pl.1"
   end
 
   def post_install
-    (etc/'sgml').mkpath
+    (etc/"sgml").mkpath
     system "xmlcatalog", "--sgml", "--noout", "--no-super-update",
            "--add", "#{etc}/sgml/catalog",
-           opt_prefix/'docbook-dsssl/catalog'
+           opt_prefix/"docbook-dsssl/catalog"
   end
 
   test do

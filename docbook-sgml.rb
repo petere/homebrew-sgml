@@ -28,9 +28,7 @@ class DocbookSgml < Formula
       (prefix/'docbook/sgml/4.2').install Dir['ISO*']
     end
 
-    inreplace prefix/'docbook/sgml/4.2/docbook.cat' do |s|
-      s.gsub! /iso-(.*).gml/, "ISO\\1"
-    end
+    inreplace prefix/'docbook/sgml/4.2/docbook.cat', /iso-(.*).gml/, "ISO\\1"
   end
 
   def post_install

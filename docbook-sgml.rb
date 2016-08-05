@@ -3,18 +3,18 @@ require 'formula'
 class DocbookSgml < Formula
   homepage 'http://www.docbook.org/'
   url 'http://www.docbook.org/sgml/4.2/docbook-4.2.zip'
-  sha1 '98afcae616ed24edb30e40baa4ddd8cd8731f2c7'
+  sha256 '67ebd2c94b342718c6865d2de60f5d4ff02d77a7e4b0d9e72a48c45f2b2635c3'
 
   bottle do
     root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
     cellar :any
-    sha1 "f339a54a844e0e5bb914f5bfe774d5a1cee5c3b0" => :yosemite
-    sha1 "00af02d622d06c869698d83bf2cf160ed0ff0a47" => :mavericks
+    sha256 "a63f1d843472ad6ef900e6f9a235a5013122752a012400964bf1f532690c2b34" => :yosemite
+    sha256 "d1440a6dcb437cccc280a30dcf9458d825d62db9e3c3ef5d479730e8d1e1e5bc" => :mavericks
   end
 
   resource 'iso8879' do
     url 'http://www.oasis-open.org/cover/ISOEnts.zip'
-    sha1 'e92da4b9e048eb4835e4c66fdfd56f9762ffbd2f'
+    sha256 'dce4359a3996ed2fd33ad5eaa11a9bcfc24b5b06992e24295132b06db19a99b2'
   end
 
   def install

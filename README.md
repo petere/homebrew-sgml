@@ -8,5 +8,6 @@ Just `brew tap petere/sgml` and then `brew install <formula>`.
 For the PostgreSQL documentation, you need:
 
     brew install docbook docbook-dsssl docbook-sgml docbook-xsl openjade
+    export SGML_CATALOG_FILES=/usr/local/etc/sgml/catalog
 
 [![Build Status](https://secure.travis-ci.org/petere/homebrew-sgml.png?branch=master)](http://travis-ci.org/petere/homebrew-sgml)

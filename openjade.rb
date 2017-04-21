@@ -69,6 +69,8 @@ class Openjade < Formula
 
     args = ["--prefix=#{prefix}",
             "--datadir=#{share}/sgml/openjade",
+            "--enable-spincludedir=#{Formula["open-sp"].include}/OpenSP",
+            "--enable-splibdir=#{Formula["open-sp"].lib}",
             "--enable-html",
             "--enable-http",
             "--enable-mif",

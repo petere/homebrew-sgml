@@ -1,6 +1,6 @@
 class Openjade < Formula
   desc "Implementation of the DSSSL language"
-  homepage "http://openjade.sourceforge.net/"
+  homepage "https://openjade.sourceforge.io/"
   url "https://downloads.sourceforge.net/project/openjade/openjade/1.3.2/openjade-1.3.2.tar.gz"
   sha256 "1d2d7996cc94f9b87d0c51cf0e028070ac177c4123ecbfd7ac1cb8d0b7d322d1"
 

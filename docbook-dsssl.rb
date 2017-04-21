@@ -1,6 +1,6 @@
 class DocbookDsssl < Formula
   desc "modular DocBook DSSSL stylesheets"
-  homepage "http://docbook.sourceforge.net/"
+  homepage "https://docbook.sourceforge.io/"
   url "https://downloads.sourceforge.net/project/docbook/docbook-dsssl/1.79/docbook-dsssl-1.79.tar.bz2"
   sha256 "2f329e120bee9ef42fbdd74ddd60e05e49786c5a7953a0ff4c680ae6bdf0e2bc"
 

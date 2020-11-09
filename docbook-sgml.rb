@@ -37,11 +37,12 @@ class DocbookSgml < Formula
            opt_prefix/"docbook/sgml/4.2/docbook.cat"
   end
 
-  def caveats; <<-EOS.undent
-    To use the DocBook SGML package in your SGML toolchain,
-    you need to add the following to your ~/.bashrc:
+  def caveats
+    <<~EOS
+      To use the DocBook SGML package in your SGML toolchain,
+      you need to add the following to your ~/.bashrc:
 
-    export SGML_CATALOG_FILES="#{etc}/sgml/catalog"
+      export SGML_CATALOG_FILES="#{etc}/sgml/catalog"
     EOS
   end
 

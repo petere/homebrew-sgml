@@ -27,7 +27,7 @@ class DocbookDsssl < Formula
   test do
     ENV["SGML_CATALOG_FILES"] = etc/"sgml/catalog"
 
-    if Formula["docbook-sgml"].installed? && Formula["openjade"].installed?
+    if Formula["docbook-sgml"].any_version_installed? && Formula["openjade"].any_version_installed?
       (testpath/"test.sgml").write <<EOS
 <!doctype book PUBLIC "-//OASIS//DTD DocBook V4.2//EN">
 <book id="foo">

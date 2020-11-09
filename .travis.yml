@@ -14,7 +14,7 @@ before_script:
 script:
   - brew install --build-bottle -v $PACKAGE
   - brew postinstall $PACKAGE
-  - brew bottle --no-revision --root-url="https://github.com/${TRAVIS_REPO_SLUG}/releases/download/${TRAVIS_TAG}" $PACKAGE
+  - brew bottle --root-url="https://github.com/${TRAVIS_REPO_SLUG}/releases/download/${TRAVIS_TAG}" $PACKAGE
   - brew audit $PACKAGE
   - brew test $PACKAGE
 deploy:

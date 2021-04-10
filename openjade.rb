@@ -6,8 +6,8 @@ class Openjade < Formula
 
   bottle do
     root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
-    sha256 "4f5865ce2baf6f938c74a51731ba95012dd542b7b8992ecba1a34feb9a2de621" => :yosemite
-    sha256 "20eb74265d7f0b86c900b9b873f3c9638880558a8146c5ad4bb3f6a83c9cd062" => :mavericks
+    sha256 yosemite:  "4f5865ce2baf6f938c74a51731ba95012dd542b7b8992ecba1a34feb9a2de621"
+    sha256 mavericks: "20eb74265d7f0b86c900b9b873f3c9638880558a8146c5ad4bb3f6a83c9cd062"
   end
 
   depends_on "open-sp"

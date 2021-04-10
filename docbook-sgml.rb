@@ -1,14 +1,13 @@
 class DocbookSgml < Formula
-  desc "standard SGML representation system for technical documents"
+  desc "Standard SGML representation system for technical documents"
   homepage "http://www.docbook.org/"
   url "http://www.docbook.org/sgml/4.2/docbook-4.2.zip"
   sha256 "67ebd2c94b342718c6865d2de60f5d4ff02d77a7e4b0d9e72a48c45f2b2635c3"
 
   bottle do
     root_url "https://github.com/petere/homebrew-sgml/releases/download/bottles-201502150"
-    cellar :any
-    sha256 "a63f1d843472ad6ef900e6f9a235a5013122752a012400964bf1f532690c2b34" => :yosemite
-    sha256 "d1440a6dcb437cccc280a30dcf9458d825d62db9e3c3ef5d479730e8d1e1e5bc" => :mavericks
+    sha256 cellar: :any, yosemite:  "a63f1d843472ad6ef900e6f9a235a5013122752a012400964bf1f532690c2b34"
+    sha256 cellar: :any, mavericks: "d1440a6dcb437cccc280a30dcf9458d825d62db9e3c3ef5d479730e8d1e1e5bc"
   end
 
   resource "iso8879" do
@@ -50,19 +49,19 @@ class DocbookSgml < Formula
     ENV["SGML_CATALOG_FILES"] = etc/"sgml/catalog"
 
     if Formula["open-sp"].any_version_installed?
-      (testpath/"test.sgml").write <<EOS
-<!doctype book PUBLIC "-//OASIS//DTD DocBook V4.2//EN">
-<book>
- <title>test</title>
- <chapter>
-  <title>random</title>
-   <sect1>
-    <title>testsect</title>
-    <para>text</para>
-  </sect1>
- </chapter>
-</book>
-EOS
+      (testpath/"test.sgml").write <<~EOS
+        <!doctype book PUBLIC "-//OASIS//DTD DocBook V4.2//EN">
+        <book>
+         <title>test</title>
+         <chapter>
+          <title>random</title>
+           <sect1>
+            <title>testsect</title>
+            <para>text</para>
+          </sect1>
+         </chapter>
+        </book>
+      EOS
       system "#{Formula["open-sp"].bin}/onsgmls", "-s", "test.sgml"
     end
   end
